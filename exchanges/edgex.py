@@ -24,24 +24,27 @@ class EdgeXClient(BaseExchangeClient):
         # EdgeX credentials from environment
         self.account_id = os.getenv('EDGEX_ACCOUNT_ID')
         self.stark_private_key = os.getenv('EDGEX_STARK_PRIVATE_KEY')
+        self.wallet_private_key = os.getenv('EDGEX_WALLET_PRIVATE_KEY')
         self.base_url = os.getenv('EDGEX_BASE_URL', 'https://pro.edgex.exchange')
         self.ws_url = os.getenv('EDGEX_WS_URL', 'wss://quote.edgex.exchange')
 
         if not self.account_id or not self.stark_private_key:
-            raise ValueError("EDGEX_ACCOUNT_ID and EDGEX_STARK_PRIVATE_KEY must be set in environment variables")
+            raise ValueError("EDGEX_ACCOUNT_ID and EDGEX_STARK_PRIVATE_KEY and EDGEX_WALLET_PRIVATE_KEY must be set in environment variables")
 
         # Initialize EdgeX client using official SDK
         self.client = Client(
             base_url=self.base_url,
             account_id=int(self.account_id),
-            stark_private_key=self.stark_private_key
+            stark_private_key=self.stark_private_key,
+            wallet_private_key=self.wallet_private_key
         )
 
         # Initialize WebSocket manager using official SDK
         self.ws_manager = WebSocketManager(
             base_url=self.ws_url,
             account_id=int(self.account_id),
-            stark_pri_key=self.stark_private_key
+            stark_pri_key=self.stark_private_key,
+            wallet_private_key=self.wallet_private_key
         )
 
         # Initialize logger

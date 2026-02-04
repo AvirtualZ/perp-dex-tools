@@ -6,6 +6,8 @@ ACCOUNT_NAME=
 # Find these in your EdgeX account under "API Management"
 EDGEX_ACCOUNT_ID=your_account_id_here
 EDGEX_STARK_PRIVATE_KEY=your_stark_private_key_here
+EDGEX_WALLET_PRIVATE_KEY=your_wallet_private_key_here
+
 
 # Backpack Account Credentials (REQUIRED for API access)
 # Find these in your Backpack account under "Portfolio" -> "Settings" -> "API Keys"
